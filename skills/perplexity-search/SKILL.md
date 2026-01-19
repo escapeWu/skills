@@ -1,6 +1,6 @@
 ---
-name: PP: Perplexity Search
-description: Real-time web search and research using Perplexity AI. Use this skill when you need real-time information like API documentation, web content, latest news, current events, or any data that may be outdated in training data.
+name: "PP: Perplexity Search"
+description: "Real-time web search and research using Perplexity AI. Use this skill when you need real-time information like API documentation, web content, latest news, current events, or any data that may be outdated in training data."
 category: Search
 tags: [perplexity, search, web, realtime, research, api-docs]
 argument-hint: [query]
@@ -18,19 +18,19 @@ Use this skill when you need to fetch **real-time data** from the web. This incl
 
 ## Available Modes
 
-### 1. Quick Search
+### 1. Quick Search (`/pp:query`)
 **Use for**: Simple questions, fact-checking, quick lookups
 - Fast response time
 - Real-time web information
 - Tool: `mcp__perplexity-mcp__search`
 
-### 2. Reasoning
+### 2. Reasoning (`/pp:reasoning`)
 **Use for**: Complex questions requiring logical analysis
 - Multi-step thinking process
 - Uses reasoning models (default: gemini-3.0-pro)
 - Tool: `mcp__perplexity-mcp__research` with `mode: "reasoning"`
 
-### 3. Deep Research
+### 3. Deep Research (`/pp:research`)
 **Use for**: Comprehensive investigations, academic research, market analysis
 - Most thorough research mode
 - Extensively explores multiple sources
