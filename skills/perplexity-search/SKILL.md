@@ -1,42 +1,78 @@
 ---
-name: perplexity-search
-description: Use Perplexity for AI-powered web search via MCP to get real-time information. Use this skill when you need to perform web searches for current information, find the latest scientific literature, get reliable answers with source citations, or access information beyond the model's knowledge cutoff. Provides both search (quick search) and research (deep research) modes.
+name: PP: Perplexity Search
+description: Real-time web search and research using Perplexity AI. Use this skill when you need real-time information like API documentation, web content, latest news, current events, or any data that may be outdated in training data.
+category: Search
+tags: [perplexity, search, web, realtime, research, api-docs]
+argument-hint: [query]
 ---
 
-# Perplexity Search
+# Perplexity Search Skill
 
-AI-powered web search using Perplexity via MCP. Prioritize using the `pro` mode for high-quality results.
+Use this skill when you need to fetch **real-time data** from the web. This includes:
 
-## Quick Start
+- **API Documentation**: Latest API references, SDK docs, library documentation
+- **Current Events**: News, announcements, releases
+- **Web Content**: Blog posts, tutorials, articles
+- **Market Data**: Prices, statistics, trends
+- **Technical Information**: Latest versions, compatibility info, changelogs
 
-### Quick Search (Free)
-```yaml
-search:
-  query: "weather today"
-  mode: "auto"
+## Available Modes
+
+### 1. Quick Search
+**Use for**: Simple questions, fact-checking, quick lookups
+- Fast response time
+- Real-time web information
+- Tool: `mcp__perplexity-mcp__search`
+
+### 2. Reasoning
+**Use for**: Complex questions requiring logical analysis
+- Multi-step thinking process
+- Uses reasoning models (default: gemini-3.0-pro)
+- Tool: `mcp__perplexity-mcp__research` with `mode: "reasoning"`
+
+### 3. Deep Research
+**Use for**: Comprehensive investigations, academic research, market analysis
+- Most thorough research mode
+- Extensively explores multiple sources
+- Tool: `mcp__perplexity-mcp__research` with `mode: "deep research"`
+
+## Selection Guide
+
+| Scenario | Mode |
+|----------|------|
+| "What is the latest version of React?" | Quick Search |
+| "How does React 19 compare to React 18?" | Reasoning |
+| "Comprehensive analysis of React vs Vue in 2024" | Deep Research |
+| "Current price of Bitcoin" | Quick Search |
+| "How do I use the new OpenAI API?" | Quick Search |
+| "What are the pros and cons of different state management solutions?" | Reasoning |
+| "In-depth analysis of microservices architecture patterns" | Deep Research |
+
+## Execution
+
+Based on the query complexity, choose the appropriate mode:
+
+**For simple/quick queries:**
+```
+Use mcp__perplexity-mcp__search with:
+- query: user's question
+- language: "zh-CN" (for Chinese responses)
 ```
 
-### Professional Search (Recommended)
-```yaml
-search:
-  query: "latest developments in CRISPR"
-  mode: "pro"
-  sources: ["web"] # or "scholar", "social"
+**For reasoning/analysis queries:**
+```
+Use mcp__perplexity-mcp__research with:
+- query: user's question
+- mode: "reasoning"
+- language: "zh-CN"
 ```
 
-### Deep Research
-```yaml
-research:
-  query: "analysis of AlphaFold3 vs AlphaFold2"
-  mode: "reasoning" # or "deep research"
+**For deep research queries:**
+```
+Use mcp__perplexity-mcp__research with:
+- query: user's question
+- mode: "deep research"
+- language: "zh-CN"
 ```
 
-## Detailed Guide
-
-For a comprehensive guide on search strategies, tool selection (search vs. research), and advanced configuration options, please refer to [search-strategy.md](references/search-strategy.md).
-
-It covers:
-- When to use `search` vs `research`
-- Detailed breakdown of modes (`auto`, `pro`, `reasoning`, `deep research`)
-- Source selection (`web`, `scholar`, `social`)
-- Decision tree for tool selection
+**Query**: $ARGUMENTS
